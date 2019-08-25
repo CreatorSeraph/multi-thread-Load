@@ -63,12 +63,13 @@ vector<texture*> ImageManager::GetVecTexture(const wstring & key, const wstring 
 	return result;
 }
 
-CMeshLoader * ImageManager::GetMesh(const wstring & key, const wstring & path)
+CMeshLoader * ImageManager::GetMesh(const wstring & key, const wstring & path, bool bFirst)
 {
 	if (auto iter = mMesh.find(key); iter != mMesh.end())
 		return iter->second;
 
 	CMeshLoader* lpMesh = new CMeshLoader();
+	lpMesh->bFirst = bFirst;
 	lpMesh->Create(g_device, path);
 
 	if (lpMesh)
@@ -91,9 +92,7 @@ vector<CMeshLoader*> ImageManager::GetVecMesh(const wstring & key, const wstring
 		newKey += i;
 		wchar_t ch[256];
 		wsprintf(ch, path.c_str(), i);
-		result.push_back(GetMesh(newKey, ch));
-
-		result.back()->bFirst = (i == 0);
+		result.push_back(GetMesh(newKey, ch, (i == 0)));
 	}
 
 	return result;

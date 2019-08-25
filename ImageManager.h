@@ -35,7 +35,7 @@ public:
 	texture* GetTexture(const wstring& key, const wstring& path);
 	vector<texture*> GetVecTexture(const wstring& key, const wstring& path, int count);
 
-	CMeshLoader* GetMesh(const wstring& key, const wstring& path);
+	CMeshLoader* GetMesh(const wstring& key, const wstring& path, bool bFirst = false);
 	vector<CMeshLoader*> GetVecMesh(const wstring& key, const wstring& path, int count);
 
 	wstring GetMtlPath() { return mtlKey; }

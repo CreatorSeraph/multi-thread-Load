@@ -155,6 +155,7 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>1::MANAGERS\INPUT</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MeshFromOBJ.fx">
@@ -211,6 +212,7 @@
     <ClInclude Include="InputManager.h">
       <Filter>1::MANAGERS\INPUT</Filter>
     </ClInclude>
+    <ClInclude Include="ThreadPool.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

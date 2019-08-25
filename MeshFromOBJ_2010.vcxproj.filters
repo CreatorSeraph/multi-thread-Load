@@ -51,6 +51,9 @@
     <Filter Include="1::MANAGERS\INPUT">
       <UniqueIdentifier>{84e9ffb5-534c-4ff9-aa92-c180379a3308}</UniqueIdentifier>
     </Filter>
+    <Filter Include="4::Scene\TestScene">
+      <UniqueIdentifier>{8e65ff54-be67-477c-939f-8d19d1510b91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -156,6 +159,9 @@
       <Filter>1::MANAGERS\INPUT</Filter>
     </ClCompile>
     <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="TestScene.cpp">
+      <Filter>4::Scene\TestScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MeshFromOBJ.fx">
@@ -213,6 +219,9 @@
       <Filter>1::MANAGERS\INPUT</Filter>
     </ClInclude>
     <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="TestScene.h">
+      <Filter>4::Scene\TestScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

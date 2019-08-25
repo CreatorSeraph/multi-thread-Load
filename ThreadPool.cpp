@@ -10,11 +10,12 @@ ThreadPool::ThreadPool(int threadSize)
 		m_threads.emplace_back([this]() {//this를 캡쳐하면 이 클래스 내부의 변수는 모두 다룰수 있게 된다.
 			while (true)
 			{
+				unique_lock lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자
+				//lock_gurad는 무조건 소멸자에서만 unlock을 호출 할 수 있지만 lock_guard는 unlock을 호출 할 수 있다.
+
 				if (m_funcQueue.empty() && m_isDestroy) return;//할일도 없고 이제 Pool이 삭제 될때가 되었으면 thread도 일을 그만두자..
 				if (m_funcQueue.empty() || m_isPaused) continue;//일이 없거나 일시정지 상태일때는 굳이 mutex를 걸일도 없이 대기상태에 있는다.
 
-				unique_lock lock(m_mutex);//뭔가 일이 생겼나보다 일단 문부터 잠구고 시작하자
-				//lock_gurad는 무조건 소멸자에서만 풀수 있지만 lock_guard는 unlock을 호출할수 있다.
 
 				auto targetFunc = std::move(m_funcQueue.front());
 				m_funcQueue.pop();//원하는 함수를 찾아서 빼고 나면

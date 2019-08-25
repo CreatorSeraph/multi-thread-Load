@@ -1,6 +1,7 @@
 #include "DXUT.h"
 #include "CMainGame.h"
 #include "CTitle.h"
+#include "TestScene.h"
 
 
 CMainGame::CMainGame()
@@ -17,8 +18,9 @@ void CMainGame::Init()
 	g_device->SetRenderState(D3DRS_LIGHTING, false);
 
 	SCENE->ADDSCENE(L"Title", new CTitle());
+	SCENE->ADDSCENE(L"TestScene", new TestScene());
 
-	SCENE->CHANGESCENE(L"Title");
+	SCENE->CHANGESCENE(L"TestScene");
 }
 
 void CMainGame::Update()

@@ -50,8 +50,7 @@ vector<texture*> ImageManager::GetVecTexture(const wstring & key, const wstring 
 		LPDIRECT3DTEXTURE9 lptexture;
 		D3DXIMAGE_INFO info;
 
-		wstring newKey = key + L"__";
-		newKey += to_wstring(i);
+		wstring newKey = key + L"__" + to_wstring(i);
 
 		wchar_t ch[256];
 		wsprintf(ch, path.c_str(), i);

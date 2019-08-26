@@ -38,5 +38,6 @@ ThreadPool::~ThreadPool()
 
 void ThreadPool::AddFunc(std::function<void()> func)
 {
+	unique_lock lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자
 	m_funcQueue.push(std::move(func));
 }

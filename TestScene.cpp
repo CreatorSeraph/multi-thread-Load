@@ -11,36 +11,28 @@ TestScene::~TestScene()
 
 void TestScene::Init()
 {
-	for (int i = 0; i < loopCount; ++i)
+	for (int i = 0; i < 10; ++i)
 	{
-		m_tp.AddFunc([i]() {
-			cout << i << endl;
-		});
+		//m_tp.AddFunc([i]() {
+		//	cout << i << endl;
+		//});
 
-		auto func1 = [](int val) {
-			cout << val << endl;
-			return val + 1;
-		};
-
-		auto func2 = [](int val) {
+		auto func = [](int val) {
 			cout << val << endl;
 		};
 
-		m_result[i] = m_tp.AddFunc(func1, i);
-		m_tp.AddFunc(func2, i);
+		m_tp.AddFunc(func, i);
 	}
 
-	//m_tp.AddFunc([&]() { IMAGE->GetVecMesh(L"Player_Idle", L"./Image/obj/thief%df.obj", 40); });
+	m_tp.AddFunc([&]() { IMAGE->GetVecMesh(L"Player_Idle", L"./Image/obj/thief%df.obj", 40); });
+
+
 }
 
 void TestScene::Update()
 {
 	if (m_tp.isEmpty())
-	{
-		for (auto& iter : m_result)
-			cout << "hi" << iter.get() << endl;
 		SCENE->CHANGESCENE(L"Title");
-	}
 }
 
 void TestScene::Render()

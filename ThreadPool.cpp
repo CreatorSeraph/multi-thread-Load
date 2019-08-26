@@ -35,3 +35,9 @@ ThreadPool::~ThreadPool()
 	for (auto& iter : m_threads)//이미 실행중인 스레드들이 모두 종료될때까지 기다려야한다.(파일이 수정중이다가 프로그램이 종료되면..?)
 		iter.join();
 }
+
+void ThreadPool::AddFunc(std::function<void()> func)
+{
+	unique_lock lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자
+	m_funcQueue.push(std::move(func));
+}

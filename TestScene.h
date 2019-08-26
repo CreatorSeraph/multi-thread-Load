@@ -6,7 +6,10 @@ class TestScene :
 	public CScene
 {
 private:
+	static constexpr int loopCount = 10;
+
 	ThreadPool m_tp;
+	std::future<int> m_result[loopCount];
 public:
 	TestScene();
 	virtual ~TestScene();

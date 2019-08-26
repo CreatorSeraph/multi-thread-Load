@@ -2,6 +2,8 @@
 #include <thread>
 #include <queue>
 #include <mutex>
+#include <future>//반환값을 나중에 확인할수 있게 만드는 기능을 포함(std::future, std::promiss)
+#include <memory>//shared_ptr을 사용할수 있다.
 
 class ThreadPool
 {
@@ -17,16 +19,35 @@ public:
 	//기본값 : hardware_concurrency : 논리 프로세서 개수
 	ThreadPool(int threadSize = thread::hardware_concurrency());
 	~ThreadPool();
+private:
 public:
-	void AddFunc(std::function<void()> func);
-
-	template<typename Func, typename ...Args, typename = typename std::enable_if_t<std::is_invocable_v<Func, Args...>>>
-	void AddFunc(Func func, Args&&... args)
+	//호출할수 있는 함수이고, 반환값이 void인 함수
+	template<typename Func, typename ...Args,
+		typename = typename std::enable_if_t<std::is_invocable_v<Func, Args...>//is_invocable_v : Func을 Args...로 호출할수 있는가?
+		&& std::is_same_v<std::invoke_result_t<Func, Args...>, void>>>//invoke_result_t : Func로 Args...를 호출했을때 반환되는 결과값
+	void AddFunc(Func func, Args&& ... args)
 	{
-		unique_lock lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자
-		//m_funcQueue.push([func = std::move(func), ...args = std::forward<Args>(args)](){func(args...); });
-		//m_funcQueue.push([func, args...](){func(args...);});
+		std::lock_guard lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자
 		m_funcQueue.push(std::bind(func, args...));
+	}
+
+	//호출할 수 있는 함수이고, 반환값이 void가 아닌함수
+	template<typename Func, typename ...Args,
+		typename = typename std::enable_if_t<std::is_invocable_v<Func, Args...>
+		&& !std::is_same_v<std::invoke_result_t<Func, Args...>, void>>>
+	std::future<std::invoke_result_t<Func, Args...>> AddFunc(Func func, Args&&... args)
+	{
+		using func_return_type = std::invoke_result_t<Func, Args...>;
+
+		auto newTaskPtr = std::make_shared<std::packaged_task<func_return_type()>>(std::bind(func, args...));
+
+		std::future<func_return_type> func_result = newTaskPtr->get_future();
+		{//lock_guard를 사용하기 위한 스코프
+			std::lock_guard<std::mutex> lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자
+			m_funcQueue.push([newTaskPtr]() { (*newTaskPtr)(); });
+		}
+
+		return func_result;
 	}
 	//이미 실행중인 함수를 제외한 이후 함수들은 작동을 일시정지 한다
 	inline void Pause() { m_isPaused = true; }

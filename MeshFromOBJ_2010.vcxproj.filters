@@ -51,8 +51,8 @@
     <Filter Include="1::MANAGERS\INPUT">
       <UniqueIdentifier>{84e9ffb5-534c-4ff9-aa92-c180379a3308}</UniqueIdentifier>
     </Filter>
-    <Filter Include="4::Scene\TestScene">
-      <UniqueIdentifier>{8e65ff54-be67-477c-939f-8d19d1510b91}</UniqueIdentifier>
+    <Filter Include="4::Scene\LoadScene">
+      <UniqueIdentifier>{97685e55-5703-431a-b249-601a3b725206}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -158,10 +158,14 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>1::MANAGERS\INPUT</Filter>
     </ClCompile>
-    <ClCompile Include="ThreadPool.cpp" />
-    <ClCompile Include="TestScene.cpp">
-      <Filter>4::Scene\TestScene</Filter>
+    <ClCompile Include="CLoadScene.cpp">
+      <Filter>4::Scene\LoadScene</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>3::CGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MeshFromOBJ.fx">
@@ -218,10 +222,14 @@
     <ClInclude Include="InputManager.h">
       <Filter>1::MANAGERS\INPUT</Filter>
     </ClInclude>
-    <ClInclude Include="ThreadPool.h" />
-    <ClInclude Include="TestScene.h">
-      <Filter>4::Scene\TestScene</Filter>
+    <ClInclude Include="CLoadScene.h">
+      <Filter>4::Scene\LoadScene</Filter>
     </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>3::CGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h" />
+    <ClInclude Include="ThreadPool.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

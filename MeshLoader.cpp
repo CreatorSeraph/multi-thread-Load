@@ -46,13 +46,11 @@ CMeshLoader::~CMeshLoader()
 //--------------------------------------------------------------------------------------
 void CMeshLoader::Destroy()
 {
-	if (bFirst)
+	
+	for (auto iter : m_Materials)
 	{
-		for (auto iter : m_Materials)
-		{
-			SAFE_RELEASE(iter->pTexture);
-			SAFE_DELETE(iter);
-		}
+		SAFE_RELEASE(iter->pTexture);
+		SAFE_DELETE(iter);
 	}
 
 	m_Materials.clear();
@@ -89,8 +87,7 @@ HRESULT CMeshLoader::Create(IDirect3DDevice9* pd3dDevice, const wstring& strFile
 	SetCurrentDirectory(m_strMediaDir);
 
 		// Load material textures
-	for (int iMaterial = 0; iMaterial < m_Materials.size
-	(); iMaterial++)
+	for (int iMaterial = 0; iMaterial < m_Materials.size(); iMaterial++)
 	{
 		Material* pMaterial = m_Materials[iMaterial];
 		if (pMaterial->strTexture[0])
@@ -225,7 +222,7 @@ HRESULT CMeshLoader::LoadGeometryFromOBJ(const wstring& strFileName)
 			// Vertex TexCoord
 			float u, v;
 			InFile >> u >> v;
-			TexCoords.Add(D3DXVECTOR2(u, 1.0f - v));
+			TexCoords.Add(D3DXVECTOR2(u, 1.f - v));
 		}
 		else if (0 == wcscmp(strCommand, L"vn"))
 		{
@@ -310,7 +307,7 @@ HRESULT CMeshLoader::LoadGeometryFromOBJ(const wstring& strFileName)
 				}
 			}
 
-			if (!bFound && bFirst)
+			if (!bFound /*&& bFirst*/)
 			{
 				pMaterial = new Material();
 
@@ -466,7 +463,7 @@ HRESULT CMeshLoader::LoadMaterialsFromMTL(const wstring& strFileName)
 
 	Material* pMaterial = NULL;
 
-	if (!bFirst)
+	/*if (!bFirst)
 	{
 		for (auto iter : m_Materials)
 		{
@@ -477,7 +474,7 @@ HRESULT CMeshLoader::LoadMaterialsFromMTL(const wstring& strFileName)
 		m_Materials.clear();
 
 		return S_OK;
-	}
+	}*/
 
 	for (; ; )
 	{

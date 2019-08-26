@@ -25,7 +25,7 @@ void Transform::TransformUpdate()
 
 	D3DXMatrixTranslation(&P, v_pos.x, v_pos.y, v_pos.z);
 
-	matWorld = S * R * P;
+	matWorld = (S * R * P);
 }
 
 void Transform::Init()

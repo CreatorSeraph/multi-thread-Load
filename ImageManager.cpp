@@ -50,8 +50,7 @@ vector<texture*> ImageManager::GetVecTexture(const wstring & key, const wstring 
 		LPDIRECT3DTEXTURE9 lptexture;
 		D3DXIMAGE_INFO info;
 
-		wstring newKey = key + L"__";
-		newKey += i;
+		wstring newKey = key + L"__" + to_wstring(i);
 
 		wchar_t ch[256];
 		wsprintf(ch, path.c_str(), i);
@@ -88,8 +87,7 @@ vector<CMeshLoader*> ImageManager::GetVecMesh(const wstring & key, const wstring
 
 	for (int i = 0; i <= count; ++i)
 	{
-		wstring newKey = key + L"__";
-		newKey += i;
+		wstring newKey = key + L"__" + to_wstring(i);
 		wchar_t ch[256];
 		wsprintf(ch, path.c_str(), i);
 		result.push_back(GetMesh(newKey, ch, (i == 0)));

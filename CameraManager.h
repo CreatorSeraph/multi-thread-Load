@@ -29,6 +29,10 @@ public:
 
 	void SetTransform();
 
+	const Vector2& GetRot() { return f_Rot; }
+	const Vector3& CameraPos() { return vCameraPos; }
+	const Vector3& ViewPos() { return vViewPos; }
+
 	void SetGameObject(CGameObject* obj)
 	{
 		lerpObj = obj;

@@ -17,6 +17,10 @@ void TestScene::Init()
 			cout << i << endl;
 		});
 	}
+
+	m_tp.AddFunc([&]() { IMAGE->GetVecMesh(L"Player_Idle", L"./Image/obj/thief%df.obj", 40); });
+
+
 }
 
 void TestScene::Update()

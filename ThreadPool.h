@@ -19,10 +19,13 @@ public:
 	~ThreadPool();
 public:
 	void AddFunc(std::function<void()> func);
-	template<typename ...Args>
-	void AddFunc(std::function<void(Args...)> func, Args... args)
+
+	template<typename Func, typename ...Args, typename = typename std::enable_if_t<std::is_invocable_v<Func, Args...>>>
+	void AddFunc(Func func, Args&&... args)
 	{
-		m_funcQueue.push([&func, args...](){func(args...)});//가변 템플릿 인자를 통해서 인자가 있는 함수도 추가할수 있게 되었다.
+		//m_funcQueue.push([func = std::move(func), ...args = std::forward<Args>(args)](){func(args...); });
+		//m_funcQueue.push([func, args...](){func(args...);});
+		m_funcQueue.push(std::bind(func, args...));
 	}
 	//이미 실행중인 함수를 제외한 이후 함수들은 작동을 일시정지 한다
 	inline void Pause() { m_isPaused = true; }

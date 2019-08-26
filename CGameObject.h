@@ -53,7 +53,7 @@ public:
 		T* com = nullptr;
 		for (auto iter : l_com)
 		{
-			com = dynamic_cast<T*>(iter);
+			com = dynamic_cast<T*> iter;
 			if (com)
 				return com;
 		}
@@ -77,6 +77,8 @@ public:
 			else
 				++Iter;
 		}
+
+		return nullptr;
 	}
 };
 

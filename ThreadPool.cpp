@@ -7,7 +7,8 @@ ThreadPool::ThreadPool(int threadSize)
 	m_threads.reserve(threadSize);//미리 vector의 공간을 잡아두는 역할을 한다. 재할당이 일어나지 않게 방지할수 있다.
 	for (int i = 0; i < threadSize; ++i)
 	{
-		m_threads.emplace_back([this]() {//this를 캡쳐하면 이 클래스 내부의 변수는 모두 다룰수 있게 된다.
+		m_threads.emplace_back([this]() // 람다식
+		{//this를 캡쳐하면 이 클래스 내부의 변수는 모두 다룰수 있게 된다.
 			while (true)
 			{
 				unique_lock lock(m_mutex);//m_funcQueue는 여러스레드에서 동시에 접근할것이다. 변수를 다루기 전에 문을 닫고 혼자 사용하자

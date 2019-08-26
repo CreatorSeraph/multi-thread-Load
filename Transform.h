@@ -22,6 +22,9 @@ public:
 	const Matrix& GetWorldMatrix() { return matWorld; }
 
 	void SetSize(const Vector3& sizz) { vSize = sizz;}
+	void SetPos(const Vector3& pos) { v_pos = pos; }
+	void SetRotation(const Vector3& rotation) { vRotation = rotation; }
+
 
 	Vector3 GetEulerRot() { Vector3 eularAngle; }
 	Vector3 GetWorldPos() { return Vector3(matWorld._41, matWorld._42, matWorld._43); }

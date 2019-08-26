@@ -2,6 +2,7 @@
 #include "CMainGame.h"
 #include "CTitle.h"
 #include "TestScene.h"
+#include "CLoadScene.h"
 
 
 CMainGame::CMainGame()
@@ -17,10 +18,11 @@ void CMainGame::Init()
 {
 	g_device->SetRenderState(D3DRS_LIGHTING, false);
 
+	SCENE->ADDSCENE(L"Load", new CLoadScene());
+	SCENE->ADDSCENE(L"Test", new TestScene());
 	SCENE->ADDSCENE(L"Title", new CTitle());
-	SCENE->ADDSCENE(L"TestScene", new TestScene());
 
-	SCENE->CHANGESCENE(L"TestScene");
+	SCENE->CHANGESCENE(L"Test");
 }
 
 void CMainGame::Update()

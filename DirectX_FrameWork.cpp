@@ -48,6 +48,10 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
 #if defined(DEBUG) | defined(_DEBUG)
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	//CrtSetBreakAlloc(138928);
+	AllocConsole();
+	freopen("CONOUT$", "a", stdout);
+	freopen("CONOUT$", "a", stderr);
+	freopen("CONIN", "r", stdin);
 #endif
 	
 

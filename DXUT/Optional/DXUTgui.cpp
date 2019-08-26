@@ -794,7 +794,7 @@ HRESULT CDXUTDialog::OnRender9( float fElapsedTime )
         pd3dDevice->SetVertexShader( NULL );
         pd3dDevice->SetPixelShader( NULL );
 
-        pd3dDevice->SetRenderState( D3DRS_ZENABLE, FALSE );
+        pd3dDevice->SetRenderState( D3DRS_ZENABLE, TRUE );
 
         pd3dDevice->SetFVF( DXUT_SCREEN_VERTEX_UNTEX::FVF );
         pd3dDevice->DrawPrimitiveUP( D3DPT_TRIANGLEFAN, 2, vertices, sizeof( DXUT_SCREEN_VERTEX_UNTEX ) );

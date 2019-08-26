@@ -23,31 +23,38 @@ CameraManager::~CameraManager()
 
 void CameraManager::Update()
 {
-	OldMouse = NowMouse;
-	NowMouse = GetMousePos();
 
-	SetCursorPos(GetScreenPos().x + WINSIZEX / 2, GetScreenPos().y + WINSIZEY / 2);
-	if (OldMouse != NowMouse)
-	{
-		float x_rot = NowMouse.x - OldMouse.x;
-		float y_rot = NowMouse.y - OldMouse.y;
-
-		f_Rot.x += x_rot;
-		f_Rot.y += y_rot;
-
-		Vector3 direction = vCameraPos - vViewPos;
-
-		Matrix XMat, YMat, XYMat;
-		D3DXMatrixRotationX(&XMat, D3DXToRadian(f_Rot.y));
-		D3DXMatrixRotationY(&YMat, D3DXToRadian(f_Rot.x));
-
-		XYMat = XMat * YMat;
-
-		//vCameraPos = Vector3(0, 0, 5);
-
-		D3DXVec3TransformNormal(&vCameraPos, &vCameraPos, &XYMat);
-	}
-
+	//if (lerpObj)
+	//{
+	//	Lerp(&vCameraPos, vCameraPos, lerpObj->transform->GetPos() + Vector3(0.f, 10.f, -5.f), 400 * DeltaTime);
+	//	Lerp(&vViewPos, vViewPos, lerpObj->transform->GetPos(), 400 * DeltaTime);
+	//}
+	//
+	//OldMouse = NowMouse;
+	//NowMouse = GetMousePos();
+	//
+	//SetCursorPos(GetScreenPos().x + WINSIZEX / 2, GetScreenPos().y + WINSIZEY / 2);
+	//
+	//if (OldMouse != NowMouse)
+	//{
+	//	float x_rot = NowMouse.x - OldMouse.x;
+	//	float y_rot = NowMouse.y - OldMouse.y;
+	//
+	//	f_Rot.x += x_rot;
+	//	f_Rot.y += y_rot;
+	//
+	//	Vector3 direction = vCameraPos - vViewPos;
+	//
+	//	Matrix XMat, YMat, XYMat;
+	//	D3DXMatrixRotationX(&XMat, D3DXToRadian(f_Rot.y));
+	//	D3DXMatrixRotationY(&YMat, D3DXToRadian(f_Rot.x));
+	//
+	//	XYMat = XMat * YMat;
+	//
+	//	//vCameraPos = Vector3(0, 0, 5);
+	//
+	//	D3DXVec3TransformNormal(&vCameraPos, &vCameraPos, &XYMat);
+	//}
 }
 
 void CameraManager::CalculatorViewMatrix()

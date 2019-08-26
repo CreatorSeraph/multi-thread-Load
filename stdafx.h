@@ -8,6 +8,8 @@
 #include <functional>
 #include <algorithm>
 #include <chrono>
+#include <thread>
+#include <mutex>
 
 using namespace std;
 using namespace chrono;
@@ -39,7 +41,7 @@ const int WINSIZEY = 720;
 template <class T>
 void Lerp(T* target, const T& start, const T& end, float speed)
 {
-	*target += start + (end - start) * speed * DeltaTime;
+	*target = start + (end - start) * speed * DeltaTime;
 }
 
 

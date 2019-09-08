@@ -7,7 +7,6 @@ private:
 	bool NowKey[256] = { false, };
 	bool OldKey[256] = { false, };
 
-
 public:
 	InputManager();
 	virtual ~InputManager();

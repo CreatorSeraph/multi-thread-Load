@@ -54,6 +54,21 @@
     <Filter Include="4::Scene\LoadScene">
       <UniqueIdentifier>{97685e55-5703-431a-b249-601a3b725206}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2::Component\Collider">
+      <UniqueIdentifier>{db035ead-ebb0-4147-9e55-3de8fc3752d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1::MANAGERS\ACTOR">
+      <UniqueIdentifier>{ceaf3408-f96e-4a77-8036-aae60596fd59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2::Component\Component">
+      <UniqueIdentifier>{1b7b52b1-b3e6-469a-8933-3eb3ed6178a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4::Scene\Scene">
+      <UniqueIdentifier>{dd1cc582-68a5-4a94-8aa5-eecadc135923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2::Component\Rigidbody">
+      <UniqueIdentifier>{86799643-93e5-4819-b647-24b64738136c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -134,9 +149,6 @@
     <ClCompile Include="ObjectManager.cpp">
       <Filter>1::MANAGERS\OBJ</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>2::Component</Filter>
-    </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>2::Component\Transform</Filter>
     </ClCompile>
@@ -149,9 +161,6 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>1::MANAGERS\SCENE</Filter>
     </ClCompile>
-    <ClCompile Include="CScene.cpp">
-      <Filter>4::Scene</Filter>
-    </ClCompile>
     <ClCompile Include="CTitle.cpp">
       <Filter>4::Scene\Title</Filter>
     </ClCompile>
@@ -161,11 +170,29 @@
     <ClCompile Include="CLoadScene.cpp">
       <Filter>4::Scene\LoadScene</Filter>
     </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>3::CGameObject</Filter>
-    </ClCompile>
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Actor.cpp">
+      <Filter>1::MANAGERS\ACTOR</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorManager.cpp">
+      <Filter>1::MANAGERS\ACTOR</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>2::Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>2::Component\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>4::Scene\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>2::Component\Rigidbody</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MeshFromOBJ.fx">
@@ -198,9 +225,6 @@
     <ClInclude Include="ObjectManager.h">
       <Filter>1::MANAGERS\OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>2::Component</Filter>
-    </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>2::Component\Transform</Filter>
     </ClInclude>
@@ -213,9 +237,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>1::MANAGERS\SCENE</Filter>
     </ClInclude>
-    <ClInclude Include="CScene.h">
-      <Filter>4::Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CTitle.h">
       <Filter>4::Scene\Title</Filter>
     </ClInclude>
@@ -225,11 +246,32 @@
     <ClInclude Include="CLoadScene.h">
       <Filter>4::Scene\LoadScene</Filter>
     </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>3::CGameObject</Filter>
-    </ClInclude>
     <ClInclude Include="TestScene.h" />
     <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Actor.hpp">
+      <Filter>1::MANAGERS\ACTOR</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>1::MANAGERS\ACTOR</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorManager.h">
+      <Filter>1::MANAGERS\ACTOR</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>2::Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>2::Component\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>4::Scene\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>2::Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

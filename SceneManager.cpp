@@ -64,8 +64,8 @@ void SceneManager::Render()
 {
 	if (NowScene)
 	{
-		NowScene->Render();
 		OBJMANAGER->Render();
+		NowScene->Render();
 	}
 }
 

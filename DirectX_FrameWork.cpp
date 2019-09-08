@@ -47,14 +47,12 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
     // Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-	//CrtSetBreakAlloc(138928);
+	//_CrtSetBreakAlloc(585230);
 	AllocConsole();
 	freopen("CONOUT$", "a", stdout);
 	freopen("CONOUT$", "a", stderr);
 	freopen("CONIN", "r", stdin);
 #endif
-	
-
     // Set the callback functions. These functions allow DXUT to notify
     // the application about device changes, user input, and windows messages.  The 
     // callbacks are optional so you need only set callbacks for events you're interested 

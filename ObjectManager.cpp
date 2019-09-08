@@ -10,26 +10,6 @@ ObjectManager::ObjectManager()
 
 ObjectManager::~ObjectManager()
 {
-	ResetComponents();
-}
-
-void ObjectManager::Update()
-{
-	for (auto iter = l_Obj.begin(); iter != l_Obj.end();)
-	{
-		if ((*iter)->GetbDeleteTag())
-		{
-			(*iter)->ComDestroy();
-			SAFE_DELETE(*iter);
-			iter = l_Obj.erase(iter);
-		}
-		else if((*iter)->GetbActive())
-		{
-			(*iter)->ComUpdate();
-			(*iter)->transform->TransformUpdate();
-			++iter;
-		}
-	}
 }
 
 void ObjectManager::Render()
@@ -40,13 +20,14 @@ void ObjectManager::Render()
 	}
 }
 
-void ObjectManager::ResetComponents()
+void ObjectManager::Destroy()
 {
-	for (auto iter : l_Obj)
+	for (auto iter : l_Ren)
 	{
-		iter->ComDestroy();
-
 		SAFE_DELETE(iter);
 	}
-	l_Obj.clear();
+
+	l_Ren.clear();
 }
+
+

@@ -34,8 +34,6 @@ void CMainGame::Update()
 
 void CMainGame::Render()
 {
-	CAMERA->CalculatorProjMatrix();
-	CAMERA->CalculatorViewMatrix();
 	CAMERA->SetTransform();
 
 	IMAGE->Begin(false);
@@ -50,6 +48,7 @@ void CMainGame::Destroy()
 	ObjectManager::DestroyInstance();
 	CameraManager::DestroyInstance();
 	InputManager::DestroyInstance();
+	CollisionManager::DestroyInstance();
 	
 }
 

@@ -24,19 +24,20 @@ public:
 
 	void Update();
 
-	void CalculatorViewMatrix();
-	void CalculatorProjMatrix();
-
 	void SetTransform();
 
-	const Vector2& GetRot() { return f_Rot; }
-	const Vector3& CameraPos() { return vCameraPos; }
-	const Vector3& ViewPos() { return vViewPos; }
+	Vector2 GetRot() { return f_Rot; }
+	Vector3 CameraPos() { return vCameraPos; }
+	Vector3 ViewPos() { return vViewPos; }
+	Matrix GetMatView() { return matView; }
+	Matrix GetMatProj() { return matProj; }
+
 
 	void SetGameObject(CGameObject* obj)
 	{
 		lerpObj = obj;
 	}
+
 	Vector2& GetScroll() { return Vector2(WINSIZEX / 2 - vCameraPos.x, WINSIZEY / 2 - vCameraPos.y); }
 
 	Vector2& GetMousePos()

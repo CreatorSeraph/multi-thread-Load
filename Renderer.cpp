@@ -3,6 +3,7 @@
 #include "CGameObject.h"
 #include "Transform.h"
 #include "MeshLoader.h"
+#include "Actor.h"
 
 //http://occamsrazr.net/tt/323 variant는 무엇인가?
 //https://www.kudryavka.me/?p=267 variant를 이용한 visit패턴의 구현, visit는 어떻게 사용하는가
@@ -32,13 +33,17 @@ Renderer::Renderer(RenderType type, const wstring& key, const wstring& path, int
 	}
 }
 
+Renderer::Renderer()
+{
+}
+
 Renderer::~Renderer()
 {
 }
 
 void Renderer::Init()
 {
-	GetGameObject()->renderer = this;
+	GetActor()->renderer = this;
 	OBJMANAGER->AddRenderer(this);
 }
 
@@ -47,6 +52,8 @@ void Renderer::Render()
 	std::visit(overload{
 		[&](CMeshLoader* Mesh3d) {
 			g_device->SetTransform(D3DTS_WORLD, &GetTransform()->GetWorldMatrix());
+
+			g_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 			for (int i = 0; i < Mesh3d->GetNumMaterials(); ++i)
 			{
@@ -60,7 +67,6 @@ void Renderer::Render()
 
 			for (int i = 0; i < VecMesh3d[0]->GetNumMaterials(); ++i)
 			{
-				//g_device->SetTexture(0, (*VecMesh3d)[frame.CurF]->GetMaterial(i)->pTexture)
 				g_device->SetTexture(0, VecMesh3d[0]->GetMaterial(i)->pTexture);
 				VecMesh3d[frame.CurF]->GetMesh()->DrawSubset(i);
 			}
@@ -80,6 +86,6 @@ void Renderer::Render()
 void Renderer::Destroy()
 {
 	OBJMANAGER->DeleteRenderer(this);
-	if (GetGameObject()->renderer == this)
-		GetGameObject()->renderer = nullptr;
+	if (GetActor()->renderer == this)
+		GetActor()->renderer = nullptr;
 }

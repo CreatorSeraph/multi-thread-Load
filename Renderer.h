@@ -24,6 +24,7 @@ private:
 
 public:
 	Renderer(RenderType type, const wstring& key, const wstring& path, int count = 0);
+	Renderer();
 	virtual ~Renderer();
 
 	CFrame& Getframe() { return frame; }
@@ -33,6 +34,10 @@ public:
 	virtual void Render();
 
 	virtual void Destroy() override;
+
+	//virtual void OnCollisionEnter(CObject * _pObject) PURE;
+	//virtual void OnCollisionStay(CObject * _pObject) PURE;
+	//virtual void OnCollisionExit(CObject * _pObject) PURE;
 
 	
 };

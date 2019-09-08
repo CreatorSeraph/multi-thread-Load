@@ -17,14 +17,8 @@ class ImageManager :
 {
 private:
 	LPD3DXSPRITE mSprite;
-
-
 	map<wstring, texture*> mTexture;
-	//map<wstring, vector<texture*>*> mVecTexture;
-
-
 	map<wstring, CMeshLoader*> mMesh;
-	//map<wstring, vector<CMeshLoader*>*> mVecMesh;
 
 	wstring mtlKey;
 
@@ -41,6 +35,8 @@ public:
 	wstring GetMtlPath() { return mtlKey; }
 
 	LPD3DXSPRITE GetSprite() { return mSprite; }
+
+
 
 	void Begin(bool isInterface);
 	void End();

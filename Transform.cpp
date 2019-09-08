@@ -1,6 +1,6 @@
 #include "DXUT.h"
 #include "Transform.h"
-
+#include "Actor.h"
 
 Transform::Transform()
 {
@@ -19,9 +19,9 @@ void Transform::TransformUpdate()
 
 	D3DXMatrixScaling(&S, vSize.x, vSize.y, vSize.z);
 
-	D3DXMatrixRotationX(&R, vRotation.x);
-	D3DXMatrixRotationY(&R, vRotation.y);
-	D3DXMatrixRotationZ(&R, vRotation.z);
+	D3DXMatrixRotationX(&R, D3DXToRadian(vRotation.x));
+	D3DXMatrixRotationY(&R, D3DXToRadian(vRotation.y));
+	D3DXMatrixRotationZ(&R, D3DXToRadian(vRotation.z));
 
 	D3DXMatrixTranslation(&P, v_pos.x, v_pos.y, v_pos.z);
 
@@ -30,5 +30,5 @@ void Transform::TransformUpdate()
 
 void Transform::Init()
 {
-	GetGameObject()->transform = this;
+	GetActor()->transform = this;
 }

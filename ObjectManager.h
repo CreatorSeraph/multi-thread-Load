@@ -8,18 +8,10 @@ class ObjectManager :
 	public singleton<ObjectManager>
 {
 private:
-	list<CGameObject*> l_Obj;
 	list<Renderer*> l_Ren;
 public:
 	ObjectManager();
 	virtual ~ObjectManager();
-
-	CGameObject* Instance()
-	{
-		CGameObject* obj = new CGameObject;
-		l_Obj.emplace_back(obj);
-		return obj;
-	}
 
 	Renderer* AddRenderer(Renderer* _render)
 	{
@@ -35,10 +27,9 @@ public:
 	}
 
 
-	void Update();
 	void Render();
+	void Destroy();
 
-	void ResetComponents();
 
 };
 

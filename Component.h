@@ -1,31 +1,77 @@
 #pragma once
-class CGameObject;
+
 class Transform;
+class Renderer;
+class Collider;
+class Rigidbody;
+
+class Actor;
+
 
 class Component
 {
+	friend class Actor;
 private:
-	CGameObject* gameObj;
-	Transform* transform;
+	Actor* actor;
 
-	bool b_Enable;
-	bool b_Delete;
+	bool b_Enable = true;
+	bool b_Delete = false;
 public:
 	Component();
 	virtual ~Component();
 
 	virtual void Init() {};
 	virtual void Update() {};
-
 	virtual void Destroy() {};
 
-	CGameObject* GetGameObject() { return gameObj; }
-	Transform* GetTransform() { return transform; }
+	Actor* GetActor() { return actor; }
+	void SetActor(Actor* ac) { actor = ac; }
+
 	bool GetEnable() { return b_Enable; }
 	bool GetDelete() { return b_Delete; }
+	Transform* GetTransform();
+	Renderer* GetRenderer();
+	Collider* GetCollider();
+	Rigidbody* GetRigidbody();
 
-	void SetGameObject(CGameObject* obj) { gameObj = obj; }
-	void SetTransform(Transform* trans) { transform = trans; }
+	// 객체가 보이게 되었을 때 호출됩니다.
+	virtual void OnVisible() {}
+	// 객체가 보이지 않게 되었을 때 호출됩니다.
+	virtual void OnUnvisible() {}
+	// 객체가 활성화 되었을 때 호출됩니다.
+	virtual void OnEnable() {}
+	// 객체가 비활성화 되었을 때 호출됩니다.
+	virtual void OnDisable() {}
+	// 객체가 파괴될 때 호출됩니다. < Destroy( Actor* ) 함수로 인해 호출됩니다. >
+	virtual void OnDestroy() {}
+	// 객체가 충돌될 때 호출됩니다. Collider* 컴포넌트가 추가되어 있는 상태에서만 호출됩니다.
+	virtual void OnCollision(Collider* other) {}
+
+	//template<class com, class ..._Ty>
+	//com* AddComponent(_Ty&&..._ty)
+	//{
+	//	com* com = new com(forward<_Ty>(_ty)...);
+	//	com->Init();
+	//	
+	//	return com;
+	//}
+	template<class com>
+	com* AddComponent();
+
+	template<class com>
+	com* GetComponent();
+
 
 };
 
+template<class com>
+inline com * Component::AddComponent()
+{
+	return actor->AddComponent<com>();
+}
+
+template<class com>
+inline com * Component::GetComponent()
+{
+	return actor->GetComponent<com>();
+}

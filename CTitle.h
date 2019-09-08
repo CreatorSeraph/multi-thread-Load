@@ -1,15 +1,19 @@
 #pragma once
+
 #include "CScene.h"
 
 class Terrain;
 class CTitle :
 	public CScene
+
 {
 private:
 	CGameObject* player;
-	Renderer* p_renderer;
+	Transform* p_renderer;
 
-	Terrain* heightmap;
+	Vector3 vec = Vector3(0.f, 0.f, 0.f);
+
+	Terrain* terrain;
 public:
 	CTitle();
 	virtual ~CTitle();

@@ -148,7 +148,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>DXUT.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
@@ -387,35 +387,48 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorManager.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="CFrame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CLoadScene.cpp" />
     <ClCompile Include="CMainGame.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CTitle.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Actor.hpp" />
+    <ClInclude Include="ActorManager.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="CFrame.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CLoadScene.h" />
     <ClInclude Include="CMainGame.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CTitle.h" />
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="stdafx.h" />

@@ -100,8 +100,12 @@ void ImageManager::Begin(bool isInterface)
 {
 	if (!isInterface)
 		mSprite->Begin(D3DXSPRITE_OBJECTSPACE | D3DXSPRITE_ALPHABLEND);
+
+	// is object
 	else
 		mSprite->Begin(D3DXSPRITE_ALPHABLEND);
+
+	//is ui
 }
 
 void ImageManager::End()

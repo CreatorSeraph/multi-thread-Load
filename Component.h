@@ -55,8 +55,8 @@ public:
 	//	
 	//	return com;
 	//}
-	template<class com>
-	com* AddComponent();
+	template<class com, class ..._Ty>
+	com* AddComponent(_Ty&&..._ty);
 
 	template<class com>
 	com* GetComponent();
@@ -64,10 +64,10 @@ public:
 
 };
 
-template<class com>
-inline com * Component::AddComponent()
+template<class com, class ..._Ty>
+inline com * Component::AddComponent(_Ty&&..._ty)
 {
-	return actor->AddComponent<com>();
+	return actor->AddComponent<com>(forward<_Ty>(_ty)...);
 }
 
 template<class com>

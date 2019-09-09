@@ -47,7 +47,7 @@ void SceneManager::Update()
 		if (NowScene)
 		{
 			NowScene->Destroy();
-			OBJMANAGER->ResetComponents();
+			//OBJMANAGER->ResetComponents();
 		}
 		NextScene->Init();
 		NowScene = NextScene;
@@ -56,7 +56,7 @@ void SceneManager::Update()
 	else if (NowScene)
 	{
 		NowScene->Update();
-		OBJMANAGER->Update();
+		//OBJMANAGER->Update();
 	}
 }
 
@@ -73,7 +73,7 @@ void SceneManager::Destroy()
 {
 	if (NowScene)
 	{
-		OBJMANAGER->ResetComponents();
+		//OBJMANAGER->ResetComponents();
 		//SAFE_DELETE(NowScene);
 	}
 

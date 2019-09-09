@@ -1,9 +1,10 @@
 #include "DXUT.h"
-#include "Renderer.h"
 #include "CGameObject.h"
-#include "Transform.h"
-#include "MeshLoader.h"
 #include "Actor.h"
+#include "Component.h"
+#include "Transform.h"
+#include "Renderer.h"
+#include "MeshLoader.h"
 
 //http://occamsrazr.net/tt/323 variant는 무엇인가?
 //https://www.kudryavka.me/?p=267 variant를 이용한 visit패턴의 구현, visit는 어떻게 사용하는가
@@ -51,7 +52,7 @@ void Renderer::Render()
 {
 	std::visit(overload{
 		[&](CMeshLoader* Mesh3d) {
-			g_device->SetTransform(D3DTS_WORLD, &GetTransform()->GetWorldMatrix());
+			g_device->SetTransform(D3DTS_WORLD, &GetActor()->transform->GetWorldMatrix());
 
 			g_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
@@ -62,7 +63,7 @@ void Renderer::Render()
 			}
 		},
 		[&](vector<CMeshLoader*> VecMesh3d) {
-			g_device->SetTransform(D3DTS_WORLD, &GetTransform()->GetWorldMatrix());
+			g_device->SetTransform(D3DTS_WORLD, &GetActor()->transform->GetWorldMatrix());
 			g_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 			for (int i = 0; i < VecMesh3d[0]->GetNumMaterials(); ++i)
@@ -72,11 +73,11 @@ void Renderer::Render()
 			}
 		},
 		[&](texture* Img) {
-			IMAGE->GetSprite()->SetTransform(&GetTransform()->GetWorldMatrix());
+			IMAGE->GetSprite()->SetTransform(&GetActor()->transform->GetWorldMatrix());
 			IMAGE->GetSprite()->Draw(Img->texturePtr, nullptr, &Vector3(0.f, 0.f, 0.f), nullptr, D3DCOLOR_ARGB(255,255,255,255));
 		},
 		[&](vector<texture*> VecImg) {
-			IMAGE->GetSprite()->SetTransform(&GetTransform()->GetWorldMatrix());
+			IMAGE->GetSprite()->SetTransform(&GetActor()->transform->GetWorldMatrix());
 			IMAGE->GetSprite()->Draw(VecImg[frame.CurF]->texturePtr, nullptr, &Vector3(0.f, 0.f, 0.f), nullptr, D3DCOLOR_ARGB(255, 255, 255, 255));
 		}
 		}, resource);

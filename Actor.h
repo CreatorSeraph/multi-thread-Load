@@ -86,8 +86,8 @@ public:
 
 public:
 
-	template <class COM>
-	COM* AddComponent();
+	template <class COM, class ..._Ty>
+	COM* AddComponent(_Ty&&..._ty);
 
 	template <class COM>
 	COM* GetComponent();

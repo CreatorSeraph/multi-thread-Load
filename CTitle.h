@@ -8,7 +8,7 @@ class CTitle :
 
 {
 private:
-	CGameObject* player;
+	Actor* player;
 	Transform* p_renderer;
 
 	Vector3 vec = Vector3(0.f, 0.f, 0.f);

@@ -23,10 +23,12 @@ public:
 	void SetPos(const Vector3& pos) { v_pos = pos; }
 	void SetRotation(const Vector3& rotation) { vRotation = rotation; }
 
+	void Translate(const Vector3& pos) { v_pos += (pos * DeltaTime); }
+
 	Vector3 GetWorldPos() { return Vector3(matWorld._41, matWorld._42, matWorld._43); }
 
 	virtual void Init() override;
-	void TransformUpdate();
+	virtual void Update() override;
 
 };
 

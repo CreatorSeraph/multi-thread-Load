@@ -13,7 +13,7 @@ Transform::~Transform()
 }
 
 
-void Transform::TransformUpdate()
+void Transform::Update()
 {
 	Matrix S, R, P;
 

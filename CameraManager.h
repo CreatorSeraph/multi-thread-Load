@@ -1,5 +1,6 @@
 #pragma once
 #include "singleton.h"
+#include "Transform.h"
 
 class CGameObject;
 class CameraManager :
@@ -17,7 +18,9 @@ private:
 	Vector2 OldMouse;
 	Vector2 f_Rot = Vector2(0.f, 0.f);
 
-	CGameObject* lerpObj;
+	float LimitDistance = 25.f;
+
+	Transform* lerpObj;
 public:
 	CameraManager();
 	virtual ~CameraManager();
@@ -33,7 +36,7 @@ public:
 	Matrix GetMatProj() { return matProj; }
 
 
-	void SetGameObject(CGameObject* obj)
+	void SetObjPos(Transform* obj)
 	{
 		lerpObj = obj;
 	}

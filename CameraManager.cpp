@@ -4,7 +4,7 @@
 
 
 CameraManager::CameraManager()
-	:vCameraPos(0.f, -10.5f, -10.f), vViewPos(0.f, 0.f, 0.f), vUp(0.f, 1.f, 0.f), lerpObj(nullptr)
+	:vCameraPos(0.f, 500.5f, -10.f), vViewPos(0.f, 0.f, 0.f), vUp(0.f, 1.f, 0.f), lerpObj(nullptr)
 {
 
 	//10.5f, -5.f
@@ -104,13 +104,16 @@ void CameraManager::Update()
 
 		D3DXVec3TransformCoord(&(vCameraPos), &(temp), &XYMat);
 
+		if (lerpObj)
+		{
+			Vector3 distance = vCameraPos - vViewPos;
 
-		//if (lerpObj)
-		//{
-		//	vViewPos = lerpObj->transform->GetPos();
-		//}
+			//if(D3DXVec3Length(&distance) >= 25.f)
+			vViewPos = lerpObj->GetTransform()->GetPos();
+			
+		}
 
-		//vCameraPos += vViewPos;
+		vCameraPos += vViewPos;
 	}
 	SetCursorPos(GetScreenPos().x + WINSIZEX / 2, GetScreenPos().y + WINSIZEY / 2);
 }

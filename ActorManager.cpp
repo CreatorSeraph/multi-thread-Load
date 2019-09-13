@@ -20,9 +20,9 @@ Actor* ActorManager::Create(int tag, bool isVisible, bool isActive)
 	A->AddComponent<Transform>();
 #endif
 
-#if (DEFAULT_COMPONENT & COMPONENTTYPE_RENDERER)
-	A->AddComponent<Renderer>();
-#endif
+//#if (DEFAULT_COMPONENT & COMPONENTTYPE_RENDERER)
+//	A->AddComponent<Renderer>();
+//#endif
 
 	m_listActors.push_back(A);
 
@@ -57,6 +57,7 @@ void ActorManager::Reset()
 	for(auto iter : m_listActors)
 	{
 		iter->Release();
+		
 		SAFE_DELETE(iter);
 	}
 

@@ -11,11 +11,12 @@ public:
 	InputManager();
 	virtual ~InputManager();
 
+	void Update();
+
 	bool KeyDown(int i)  { return NowKey[i] && !OldKey[i]; }
 	bool KeyPress(int i) { return NowKey[i] && OldKey[i]; }
 	bool KeyUp(int i)    { return !NowKey[i] && OldKey[i]; }
 
-	void Update();
 };
 
 #define INPUT InputManager::GetInstance()

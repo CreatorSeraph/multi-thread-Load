@@ -1,6 +1,62 @@
 #pragma once
 #include "Component.h"
 
+enum ColliderType : char
+{
+	MeshSphere,
+	spriteBox,
+};
+
+
+struct Sphere
+{
+	Sphere() {}
+	Sphere(float radius) : length(radius) {}
+
+	Vector3 center;
+	float length;
+
+};
+
+class Collider :
+	public Component
+{
+private:
+
+	ColliderType type;
+	RECT* c_rect;
+	Sphere* c_sphere;
+
+
+public:
+	Collider(ColliderType _type, float width, float height);
+	Collider(ColliderType _type, float radius);
+	Collider();
+
+	virtual ~Collider();
+
+	ColliderType GetColliderType() { return type; }
+	RECT GetWorldRange();
+
+	Vector3 GetCenter()
+	{
+		Vector3 diff = c_sphere->center;
+		return diff;
+	}
+	float getlength()
+	{
+		return c_sphere->length;
+	}
+
+	virtual void Init() override;
+	virtual void Update() override;
+	virtual void Destroy() override;
+
+
+	//bool IsCollision(Collider* a, Collider* b);
+};
+
+/*
 
 class Collider :
    public Component
@@ -69,3 +125,4 @@ public:
 public:
    static bool IsCollision(const Collider* col1, const Collider* col2);
 };
+*/

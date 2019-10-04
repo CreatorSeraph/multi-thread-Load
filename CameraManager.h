@@ -1,6 +1,7 @@
 #pragma once
 #include "singleton.h"
 #include "Transform.h"
+#include "Actor.h"
 
 class CGameObject;
 class CameraManager :
@@ -8,7 +9,7 @@ class CameraManager :
 {
 private:
 	Vector3 vCameraPos;
-	Vector3 vViewPos;
+	Vector3 vAt;
 	Vector3 vUp;
 
 	Matrix matView;
@@ -20,7 +21,7 @@ private:
 
 	float LimitDistance = 25.f;
 
-	Transform* lerpObj;
+	Actor* lerpObj;
 public:
 	CameraManager();
 	virtual ~CameraManager();
@@ -31,30 +32,44 @@ public:
 
 	Vector2 GetRot() { return f_Rot; }
 	Vector3 CameraPos() { return vCameraPos; }
-	Vector3 ViewPos() { return vViewPos; }
+	Vector3 AtPos() { return vAt; }
 	Matrix GetMatView() { return matView; }
 	Matrix GetMatProj() { return matProj; }
 
+	void RayCast();
 
-	void SetObjPos(Transform* obj)
+	Vector2 SetRot(const Vector2& _rot) { return f_Rot = _rot; }
+	void SetObjPos(Actor* obj)
 	{
 		lerpObj = obj;
 	}
 
 	Vector2& GetScroll() { return Vector2(WINSIZEX / 2 - vCameraPos.x, WINSIZEY / 2 - vCameraPos.y); }
 
+	//ui
+	//ScreenToClient 전체 창에서 mousepos를 프로그램 내의 mousepos로 변경
 	Vector2& GetMousePos()
 	{
 		POINT point;
 		GetCursorPos(&point);
 		ScreenToClient(DXUTGetHWND(), &point);
-		Vector2 Cur (point.x, point.y);
-		return Cur;
+		Vector2 v_mousepos(point.x, point.y);
+		return v_mousepos;
 	}
-
+	//obj
 	Vector2& GetScreenPos()
 	{
-		POINT point = {0,0};
+		POINT point;
+		GetCursorPos(&point);
+		ScreenToClient(DXUTGetHWND(), &point);
+		Vector2 v_mousepos(point.x, point.y);
+		v_mousepos -= Vector2(WINSIZEX / 2 - vCameraPos.x, WINSIZEY / 2 - vCameraPos.y);
+		return v_mousepos;
+	}
+
+	Vector2& GetScreenWheelPos()
+	{
+		POINT point = { 0,0 };
 		ClientToScreen(DXUTGetHWND(), &point);
 		Vector2 v_mousepos(point.x, point.y);
 		return v_mousepos;

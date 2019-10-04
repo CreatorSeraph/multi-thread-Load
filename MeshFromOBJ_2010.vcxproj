@@ -399,6 +399,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CTitle.cpp" />
+    <ClCompile Include="Gorgol.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -423,6 +424,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CTitle.h" />
+    <ClInclude Include="Gorgol.h" />
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="ObjectManager.h" />

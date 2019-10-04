@@ -9,7 +9,10 @@ class CTitle :
 {
 private:
 	Actor* player;
-	Transform* p_renderer;
+	Actor* gorgol;
+
+	Transform* p_transform;
+	Renderer* p_renderer;
 
 	Vector3 vec = Vector3(0.f, 0.f, 0.f);
 

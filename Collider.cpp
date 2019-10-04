@@ -2,7 +2,9 @@
 #include "Actor.h"
 #include "Collider.h"
 #include "Transform.h"
+#include "Actor.h"
 
+/*
 void Collider::Init()
 {
 	GetActor()->collider = this;
@@ -143,4 +145,65 @@ bool Collider::MixData::IsCollision(const AABBData* a, const SphereData* b)
 bool Collider::MixData::IsCollision(const SphereData* a, const AABBData* b)
 {
 	return IsCollision(b, a);
+}
+*/
+
+Collider::Collider(ColliderType _type, float width, float height)
+	:c_sphere(nullptr)
+{
+	type = ColliderType::spriteBox;
+	RECT* r;
+	SetRect(&(*r), -width / 2, -height / 2, width / 2, height / 2);
+
+	c_rect = r;
+}
+
+Collider::Collider(ColliderType _type, float radius)
+	:c_rect(nullptr)
+{
+	type = ColliderType::MeshSphere;
+
+	Sphere* empty = new Sphere(radius);
+
+	c_sphere = empty;
+}
+
+Collider::Collider()
+{
+}
+
+Collider::~Collider()
+{
+	if (c_sphere)
+		delete (c_sphere);
+
+	if (c_rect)
+		delete (c_rect);
+}
+
+void Collider::Init()
+{
+	GetActor()->collider = this;
+	if(type == ColliderType::MeshSphere)
+		c_sphere->center = GetActor()->transform->GetPos();
+}
+
+void Collider::Update()
+{
+}
+
+void Collider::Destroy()
+{
+}
+
+RECT Collider::GetWorldRange()
+{
+	RECT ret;
+
+	ret.left = c_rect->left + GetActor()->GetTransform()->GetPos().x;
+	ret.right = c_rect->right + GetActor()->GetTransform()->GetPos().x;
+	ret.top = c_rect->top + GetActor()->GetTransform()->GetPos().y;
+	ret.bottom = c_rect->bottom + GetActor()->GetTransform()->GetPos().y;
+
+	return ret;
 }

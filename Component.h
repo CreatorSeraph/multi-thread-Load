@@ -24,11 +24,12 @@ public:
 	virtual void Update() {};
 	virtual void Destroy() {};
 
-	Actor* GetActor() { return actor; }
-	void SetActor(Actor* ac) { actor = ac; }
+	virtual Actor* GetActor() { return actor; }
+	virtual void SetActor(Actor* ac) { actor = ac; }
 
-	bool GetEnable() { return b_Enable; }
-	bool GetDelete() { return b_Delete; }
+	virtual bool GetEnable() { return b_Enable; }
+	virtual bool GetDelete() { return b_Delete; }
+
 	Transform* GetTransform();
 	Renderer* GetRenderer();
 	Collider* GetCollider();

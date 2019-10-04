@@ -49,6 +49,7 @@ void CMainGame::Destroy()
 	CameraManager::DestroyInstance();
 	InputManager::DestroyInstance();
 	CollisionManager::DestroyInstance();
+	ActorManager::DestroyInstance();
 	
 }
 

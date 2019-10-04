@@ -69,6 +69,18 @@
     <Filter Include="2::Component\Rigidbody">
       <UniqueIdentifier>{86799643-93e5-4819-b647-24b64738136c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="1::MANAGERS\COLLISION">
+      <UniqueIdentifier>{316231c0-b283-4cc3-9831-7e936f10515a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2::Component\Player">
+      <UniqueIdentifier>{65e92181-7063-4b37-889f-813681392a85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4::Scene\TestScene">
+      <UniqueIdentifier>{d355010d-757f-4a30-8972-de40de114a6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2::Component\Gorgol">
+      <UniqueIdentifier>{acdd3c0d-05d8-45c9-8609-0a45501038aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -170,11 +182,8 @@
     <ClCompile Include="CLoadScene.cpp">
       <Filter>4::Scene\LoadScene</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="ThreadPool.cpp" />
     <ClCompile Include="Terrain.cpp" />
-    <ClCompile Include="CollisionManager.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Actor.cpp">
       <Filter>1::MANAGERS\ACTOR</Filter>
     </ClCompile>
@@ -192,6 +201,18 @@
     </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>2::Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>1::MANAGERS\COLLISION</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>2::Component\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>4::Scene\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Gorgol.cpp">
+      <Filter>2::Component\Gorgol</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -246,11 +267,8 @@
     <ClInclude Include="CLoadScene.h">
       <Filter>4::Scene\LoadScene</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h" />
     <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="Terrain.h" />
-    <ClInclude Include="CollisionManager.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="Actor.hpp">
       <Filter>1::MANAGERS\ACTOR</Filter>
     </ClInclude>
@@ -271,6 +289,18 @@
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>2::Component\Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>1::MANAGERS\COLLISION</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>2::Component\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>4::Scene\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Gorgol.h">
+      <Filter>2::Component\Gorgol</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

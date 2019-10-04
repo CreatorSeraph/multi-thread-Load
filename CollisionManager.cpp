@@ -11,7 +11,8 @@ CollisionManager::~CollisionManager()
 {
 }
 
-bool CollisionManager::PixelCollider(Vector3 * pos, CGameObject * target, int mW, int mH, int CellSpacingX, int CellSpacingZ)
+bool CollisionManager::PixelCollider(Vector3 * pos, CGameObject * target, 
+	int mW, int mH, int CellSpacingX, int CellSpacingZ)
 {
 	if(!target)
 	{
@@ -73,8 +74,60 @@ bool CollisionManager::PixelCollider(Vector3 * pos, CGameObject * target, int mW
 
 void CollisionManager::AddCollider(Collider * col)
 {
+	l_Collider.emplace_back(col);
 }
 
 void CollisionManager::RemoveCollider(Collider * col)
 {
+	l_Collider.remove(col);
+}
+
+void CollisionManager::Update()
+{
+	if (l_Collider.size() < 2)
+		return;
+
+	for (auto iter : l_Collider)
+	{
+		for (auto Iter : l_Collider)
+		{
+			if (Iter == iter)
+				continue;
+
+			if (Iter->GetActor()->collider->GetColliderType() !=
+				iter->GetActor()->collider->GetColliderType())
+				continue;
+
+
+			if ((Iter->GetActor()->collider->GetColliderType() ==
+				iter->GetActor()->collider->GetColliderType())
+				== ColliderType::spriteBox)
+			{
+				RECT out;
+				if (IntersectRect(&out, &Iter->GetWorldRange(), &iter->GetWorldRange()))
+				{
+					Iter->GetActor()->OnCollision(iter);
+					iter->GetActor()->OnCollision(Iter);
+				}
+			}
+			else if ((Iter->GetActor()->collider->GetColliderType() ==
+				iter->GetActor()->collider->GetColliderType())
+				== ColliderType::MeshSphere)
+			{
+				float centerLength = D3DXVec3Length(&(Iter->GetActor()->collider->GetCenter() -
+					iter->GetActor()->collider->GetCenter()));
+
+				float radiusLength = Iter->GetActor()->collider->getlength() + 
+					iter->GetActor()->collider->getlength();
+
+				if (radiusLength >= centerLength)
+				{
+					Iter->GetActor()->OnCollision(iter);
+					iter->GetActor()->OnCollision(Iter);
+				}
+			}
+
+			
+		}
+	}
 }

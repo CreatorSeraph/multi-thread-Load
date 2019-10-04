@@ -20,14 +20,19 @@ private:
 
 	variant<CMeshLoader*, vector<CMeshLoader*>, texture*, vector<texture*>> resource;
 
-	CFrame frame;
+	CFrame* frame;
+
+	bool IsFrame = false;
 
 public:
 	Renderer(RenderType type, const wstring& key, const wstring& path, int count = 0);
 	Renderer();
 	virtual ~Renderer();
 
-	CFrame& Getframe() { return frame; }
+	void ChangeMesh(const wstring& key, const wstring& path, int count = 0);
+
+	CFrame* Getframe() { return frame; }
+	void SetFrame() { IsFrame = !IsFrame; }
 
 	virtual void Init() override;
 

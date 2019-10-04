@@ -8,6 +8,7 @@ public:
 	enum : char
 	{
 		BACKGROUND,
+		PLAYER,
 		END,
 	};
 };
@@ -20,7 +21,7 @@ private:
 
 public:
 	ActorManager() {}
-	~ActorManager() { Reset(); }
+	virtual ~ActorManager() { Reset(); }
 
 	// 새 엑터를 생성합니다.
 	// DEFAULT_COMPONENT 메크로 옵션을 통해 기본으로 엑터에 내장할 컴포넌트를

@@ -25,6 +25,9 @@ public:
 
 	void AddCollider(Collider* col);
 	void RemoveCollider(Collider* col);
+
+	void Update();
+
 };
 
 #define COLLISION CollisionManager::GetInstance()

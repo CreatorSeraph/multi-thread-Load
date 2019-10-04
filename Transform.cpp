@@ -19,12 +19,14 @@ void Transform::Update()
 
 	D3DXMatrixScaling(&S, vSize.x, vSize.y, vSize.z);
 
-	D3DXMatrixRotationX(&R, D3DXToRadian(vRotation.x));
-	D3DXMatrixRotationY(&R, D3DXToRadian(vRotation.y));
-	D3DXMatrixRotationZ(&R, D3DXToRadian(vRotation.z));
+	Matrix rX, rY, rZ;
+	D3DXMatrixRotationX(&rX, D3DXToRadian(vRotation.x));
+	D3DXMatrixRotationY(&rY, D3DXToRadian(vRotation.y));
+	D3DXMatrixRotationZ(&rZ, D3DXToRadian(vRotation.z));
 
 	D3DXMatrixTranslation(&P, v_pos.x, v_pos.y, v_pos.z);
 
+	R = rX * rY * rZ;
 	matWorld = (S * R * P);
 }
 

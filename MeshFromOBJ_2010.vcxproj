@@ -393,6 +393,7 @@
     <ClCompile Include="CFrame.cpp" />
     <ClCompile Include="CGameObject.cpp" />
     <ClCompile Include="CLoadScene.cpp" />
+    <ClCompile Include="ClockScene.cpp" />
     <ClCompile Include="CMainGame.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -403,6 +404,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -418,6 +420,7 @@
     <ClInclude Include="CFrame.h" />
     <ClInclude Include="CGameObject.h" />
     <ClInclude Include="CLoadScene.h" />
+    <ClInclude Include="ClockScene.h" />
     <ClInclude Include="CMainGame.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
@@ -429,6 +432,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Ray.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="SceneManager.h" />

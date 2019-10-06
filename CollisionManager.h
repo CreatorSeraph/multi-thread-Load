@@ -25,6 +25,10 @@ public:
 
 	void AddCollider(Collider* col);
 	void RemoveCollider(Collider* col);
+	list<Collider*> GetColliderList()
+	{
+		return l_Collider;
+	}
 
 	void Update();
 

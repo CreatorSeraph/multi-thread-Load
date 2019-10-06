@@ -131,34 +131,9 @@ void Terrain::IndexSetting()
 
 void Terrain::Render()
 {
-	//3983
-	//3978
-
-
 	UINT iPass, cPasses;
 	
 	g_device->SetRenderState(D3DRS_LIGHTING, FALSE);
-	
-	//D3DXMATRIX Trans;
-	//D3DXMatrixTranslation(&Trans, 0, 0, 0);
-	//
-	//D3DXMATRIX mWVP = Trans * CAMERA->GetMatView() * CAMERA->GetMatProj();
-	
-	//LIGHTFX->SetWorldViewProjection(mWVP);
-	//LIGHTFX->SetWorld(Trans);+
-	//if(OBJMANAGER->iStage == 1)
-	//	LIGHTFX->SetTexture(IMAGE->GetTexture(L"HEIGHTMAP1ROAD", L"")->texturePtr);
-	//
-	//else
-	//	LIGHTFX->SetTexture(IMAGE->GetTexture(L"HEIGHTMAP2ROAD", L"")->texturePtr);
-	//
-	//LIGHTFXEFT->SetTechnique(LIGHTFX->g_pEffect->GetTechniqueByName("TexturedNoSpecular"));
-	//
-	//LIGHTFXEFT->Begin(&cPasses, 0);
-	
-	//for (iPass = 0; iPass < cPasses; iPass++)
-	//{
-		//LIGHTFXEFT->BeginPass(iPass);
 
 	D3DXMATRIX mat;
 	D3DXMatrixIdentity(&mat);
@@ -176,41 +151,8 @@ void Terrain::Render()
 		0, 0,
 		numVertices,
 		0, numTriangles);
-	
-		//LIGHTFXEFT->EndPass();
-	//}
-	//LIGHTFXEFT->End();
 		
 	g_device->SetRenderState(D3DRS_LIGHTING, TRUE);
-
-	//if (OBJMANAGER->iStage == 1)
-	//{
-	//	INFO m_tInfo;
-	//	m_tInfo.Pos = Vector3(0, 180, 750);
-	//	m_tInfo.Scale = Vector3(1.72, 1, 1.72);
-	//	D3DXMatrixScaling(&m_tInfo.matScale, m_tInfo.Scale.x, m_tInfo.Scale.y, m_tInfo.Scale.z);
-	//	D3DXMatrixTranslation(&m_tInfo.matTrans, m_tInfo.Pos.x, m_tInfo.Pos.y, m_tInfo.Pos.z);
-	//	m_tInfo.matWorld = m_tInfo.matScale * m_tInfo.matTrans;
-	//	MESHMANAGER->Render(WallMeshKey, m_tInfo);
-	//}
-	//
-	//else
-	//{
-	//	INFO m_tInfo;
-	//	m_tInfo.Pos = Vector3(0, 365, 0);
-	//	m_tInfo.Scale = Vector3(1.2, 1, 1.2);
-	//	D3DXMatrixScaling(&m_tInfo.matScale, m_tInfo.Scale.x, m_tInfo.Scale.y, m_tInfo.Scale.z);
-	//	D3DXMatrixTranslation(&m_tInfo.matTrans, m_tInfo.Pos.x, m_tInfo.Pos.y, m_tInfo.Pos.z);
-	//	m_tInfo.matWorld = m_tInfo.matScale * m_tInfo.matTrans;
-	//	MESHMANAGER->Render("FENCE", m_tInfo);
-	//
-	//	m_tInfo.Pos = Vector3(0, 180, 0);
-	//	m_tInfo.Scale = Vector3(1.3, 1, 1.3);
-	//	D3DXMatrixScaling(&m_tInfo.matScale, m_tInfo.Scale.x, m_tInfo.Scale.y, m_tInfo.Scale.z);
-	//	D3DXMatrixTranslation(&m_tInfo.matTrans, m_tInfo.Pos.x, m_tInfo.Pos.y, m_tInfo.Pos.z);
-	//	m_tInfo.matWorld = m_tInfo.matScale * m_tInfo.matTrans;
-	//	MESHMANAGER->Render(WallMeshKey, m_tInfo);
-	//}
 }
 
 void Terrain::Destroy()

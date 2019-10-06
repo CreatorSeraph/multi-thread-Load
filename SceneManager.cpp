@@ -79,7 +79,6 @@ void SceneManager::Destroy()
 
 	for (auto iter : SCENES)
 	{
-		iter.second->Destroy();
 		SAFE_DELETE(iter.second);
 	}
 	SCENES.clear();

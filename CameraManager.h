@@ -14,6 +14,7 @@ private:
 
 	Matrix matView;
 	Matrix matProj;
+	Matrix matProjOrtho;
 
 	Vector2 NowMouse;
 	Vector2 OldMouse;
@@ -29,14 +30,17 @@ public:
 	void Update();
 
 	void SetTransform();
+	void SetCameraPos(Vector3 pos) { vCameraPos = pos; }
+	void SetAtPos(Vector3 at) { vAt = at; }
 
 	Vector2 GetRot() { return f_Rot; }
 	Vector3 CameraPos() { return vCameraPos; }
 	Vector3 AtPos() { return vAt; }
+
 	Matrix GetMatView() { return matView; }
 	Matrix GetMatProj() { return matProj; }
 
-	void RayCast();
+
 
 	Vector2 SetRot(const Vector2& _rot) { return f_Rot = _rot; }
 	void SetObjPos(Actor* obj)

@@ -32,6 +32,8 @@ public:
 	CMeshLoader* GetMesh(const wstring& key, const wstring& path, bool bFirst = false);
 	vector<CMeshLoader*> GetVecMesh(const wstring& key, const wstring& path, int count);
 
+	void PrintText(const wstring& text, Vector3 pos, D3DCOLOR color, float size, bool center = false);
+
 	wstring GetMtlPath() { return mtlKey; }
 
 	LPD3DXSPRITE GetSprite() { return mSprite; }

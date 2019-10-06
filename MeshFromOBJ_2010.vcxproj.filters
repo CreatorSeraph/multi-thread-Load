@@ -214,6 +214,10 @@
     <ClCompile Include="Gorgol.cpp">
       <Filter>2::Component\Gorgol</Filter>
     </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>1::MANAGERS\CAMERA</Filter>
+    </ClCompile>
+    <ClCompile Include="ClockScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MeshFromOBJ.fx">
@@ -302,6 +306,10 @@
     <ClInclude Include="Gorgol.h">
       <Filter>2::Component\Gorgol</Filter>
     </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>1::MANAGERS\CAMERA</Filter>
+    </ClInclude>
+    <ClInclude Include="ClockScene.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

@@ -96,6 +96,19 @@ vector<CMeshLoader*> ImageManager::GetVecMesh(const wstring & key, const wstring
 	return result;
 }
 
+void ImageManager::PrintText(const wstring & text, Vector3 pos, D3DCOLOR color, float size, bool center)
+{
+	LPD3DXFONT font;
+	Matrix mat;
+	D3DXCreateFontA(g_device, size, 0, 0, 1,
+		FALSE, HANGUL_CHARSET, 0, 0, 0, "Fixedsys", &font);
+	D3DXMatrixTranslation(&mat, 10, 10, 0);
+
+	mSprite->SetTransform(&mat);
+	font->DrawTextW(mSprite, text.c_str(), text.size(), NULL, DT_CENTER, color);
+	SAFE_RELEASE(font);
+}
+
 void ImageManager::Begin(bool isInterface)
 {
 	if (!isInterface)

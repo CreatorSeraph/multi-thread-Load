@@ -48,10 +48,10 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
 #if defined(DEBUG) | defined(_DEBUG)
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	//_CrtSetBreakAlloc(2139087);
-	AllocConsole();
-	freopen("CONOUT$", "a", stdout);
-	freopen("CONOUT$", "a", stderr);
-	freopen("CONIN", "r", stdin);
+	//AllocConsole();
+	//freopen("CONOUT$", "a", stdout);
+	//freopen("CONOUT$", "a", stderr);
+	//freopen("CONIN", "r", stdin);
 #endif
     // Set the callback functions. These functions allow DXUT to notify
     // the application about device changes, user input, and windows messages.  The 

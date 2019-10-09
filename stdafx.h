@@ -83,6 +83,7 @@ static float lerp(float a, float b, float t)
 	return a - (a*t) + (b*t);
 }
 
+#pragma comment (linker , "/entry:wWinMainCRTStartup /subsystem:console")
 
 #include "ImageManager.h"
 #include "CameraManager.h"

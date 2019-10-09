@@ -83,7 +83,6 @@ void Renderer::Render()
 	std::visit(overload{
 		[&](CMeshLoader* Mesh3d) {
 			g_device->SetTransform(D3DTS_WORLD, &GetActor()->transform->GetWorldMatrix());
-
 			g_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 			for (int i = 0; i < Mesh3d->GetNumMaterials(); ++i)

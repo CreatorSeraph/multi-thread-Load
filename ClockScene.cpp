@@ -77,4 +77,5 @@ void ClockScene::Render()
 void ClockScene::Destroy()
 {
 	sphereMesh[0]->Release();
+	sphereMesh[1]->Release();
 }

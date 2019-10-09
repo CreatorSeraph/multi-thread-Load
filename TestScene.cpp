@@ -11,8 +11,8 @@ TestScene::~TestScene()
 
 void TestScene::Init()
 {
-	//m_tp.AddFunc([&]() {IMAGE->GetVecMesh(L"Palyer_Run", L"./Image/obj/thief_run%df.obj", 24); });
-	//m_tp.AddFunc([&]() {IMAGE->GetVecMesh(L"player", L"./Image/obj/thief%df.obj", 40); });
+	m_tp.AddFunc([&]() {IMAGE->GetVecMesh(L"Palyer_Run", L"./Image/obj/thief_run%df.obj", 24); });
+	m_tp.AddFunc([&]() {IMAGE->GetVecMesh(L"player", L"./Image/obj/thief%df.obj", 40); });
 	//for (int i = 0; i < 24; ++i)
 	//{
 	//	//m_tp.AddFunc([i]() {IMAGE->GetVecMesh(L"Plyaer_Run", L"./Image/obj/thief_run%df", i); });

@@ -54,8 +54,6 @@ vector<texture*> ImageManager::GetVecTexture(const wstring & key, const wstring 
 
 		wchar_t ch[256];
 		wsprintf(ch, path.c_str(), i);
-		 
-		// ./resource(%d).png
 
 		result.push_back(GetTexture(newKey, ch));
 	}
@@ -100,8 +98,9 @@ void ImageManager::PrintText(const wstring & text, Vector3 pos, D3DCOLOR color, 
 {
 	LPD3DXFONT font;
 	Matrix mat;
-	D3DXCreateFontA(g_device, size, 0, 0, 1,
-		FALSE, HANGUL_CHARSET, 0, 0, 0, "Fixedsys", &font);
+	D3DXCreateFontW(g_device, size, 0, 0, 1,
+		FALSE, HANGUL_CHARSET, 0, 0, 0, L"Arial", &font);
+
 	D3DXMatrixTranslation(&mat, 10, 10, 0);
 
 	mSprite->SetTransform(&mat);

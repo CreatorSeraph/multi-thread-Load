@@ -67,7 +67,7 @@ public:
 		GetCursorPos(&point);
 		ScreenToClient(DXUTGetHWND(), &point);
 		Vector2 v_mousepos(point.x, point.y);
-		v_mousepos -= Vector2(WINSIZEX / 2 - vCameraPos.x, WINSIZEY / 2 - vCameraPos.y);
+		v_mousepos -= GetScroll();
 		return v_mousepos;
 	}
 

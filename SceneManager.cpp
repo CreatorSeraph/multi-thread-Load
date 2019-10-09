@@ -73,6 +73,7 @@ void SceneManager::Destroy()
 {
 	if (NowScene)
 	{
+		NowScene->Destroy();
 		//OBJMANAGER->ResetComponents();
 		//SAFE_DELETE(NowScene);
 	}

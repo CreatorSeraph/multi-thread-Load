@@ -99,6 +99,7 @@ HRESULT CMeshLoader::Create(IDirect3DDevice9* pd3dDevice, const wstring& strFile
 				Material* pCur = m_Materials[x];
 				if (0 == wcscmp(pCur->strTexture.c_str(), pMaterial->strTexture.c_str()))
 				{
+
 					bFound = true;
 					pMaterial->pTexture = pCur->pTexture;
 					break;

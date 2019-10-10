@@ -9,6 +9,7 @@ ClockScene::ClockScene()
 
 ClockScene::~ClockScene()
 {
+	//Destroy();
 }
 
 void ClockScene::Init()
@@ -17,8 +18,8 @@ void ClockScene::Init()
 	CAMERA->SetAtPos(Vector3(0.f, 0.f, 0.f));
 
 
-	D3DXCreateSphere(g_device, 10.0f, 30, 15, &sphereMesh[0], NULL);
-	D3DXCreateSphere(g_device, 11.0f, 33, 16.f, &sphereMesh[1], NULL);
+	D3DXCreateSphere(g_device, 10.0f, 30, 15, &(*sphereMesh)[0], NULL);
+	D3DXCreateSphere(g_device, 11.0f, 33, 16.f, &(*sphereMesh)[1], NULL);
 
 	D3DXMatrixIdentity(&mat[0]);
 	D3DXMatrixIdentity(&mat[1]);
@@ -63,11 +64,11 @@ void ClockScene::Render()
 
 	g_device->SetTexture(NULL, (IMAGE->GetTexture(L"maping", L"./Image/maping.png")->texturePtr));
 
-	sphereMesh[0]->DrawSubset(0);
+	(*sphereMesh)[0]->DrawSubset(0);
 
 	g_device->SetTransform(D3DTS_WORLD, &mat[1]);
 
-	sphereMesh[1]->DrawSubset(0);
+	(*sphereMesh)[1]->DrawSubset(0);
 
 	
 	g_device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
@@ -76,6 +77,8 @@ void ClockScene::Render()
 
 void ClockScene::Destroy()
 {
-	sphereMesh[0]->Release();
-	sphereMesh[1]->Release();
+	if(*sphereMesh[0])
+		SAFE_RELEASE(*sphereMesh[0]);
+	if (*sphereMesh[1])
+		SAFE_RELEASE(*sphereMesh[1]);
 }

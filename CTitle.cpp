@@ -26,7 +26,7 @@ void CTitle::Init()
 	player = ACTOR->Create(TagType::BACKGROUND);
 	player->AddComponent<Player>();
 	player->AddComponent<Rigidbody>();
-	player->AddComponent<Renderer>(RenderType::vecmesh , L"player", L"./Image/obj/thief%df.obj", 40);
+	player->AddComponent<Renderer>(RenderType::vecmesh , L"player", L"./Image/obj/thief%df.obj", 1);
 	//player->AddComponent<Renderer>(RenderType::vecmesh, L"clud", L"./Image/dx_cloud_cha/Character%df.obj", 15);
 	player->AddComponent<Collider>(ColliderType::MeshSphere, 10.f);
 
@@ -39,7 +39,7 @@ void CTitle::Init()
 	//gorgol->AddComponent<Collider>(ColliderType::MeshSphere, 10.f);
 
 	p_renderer = player->GetComponent<Renderer>();
-	p_renderer->Getframe()->SetFrame(0, 40, 50);
+	p_renderer->Getframe()->SetFrame(0, 1, 50);
 	p_renderer->SetFrame();
 
 	//player->GetTransform()->SetSize(Vector3(0.02, 0.02, 0.02));
@@ -66,7 +66,6 @@ void CTitle::Update()
 	p_transform->SetPos(pos);
 	//gorgol->GetTransform()->SetPos(gpos);
 
-	ACTOR->Update();
 }
 
 
@@ -78,7 +77,6 @@ void CTitle::Render()
 
 void CTitle::Destroy()
 {
-	ACTOR->Reset();
 	terrain->Destroy();
 	delete terrain;
 }

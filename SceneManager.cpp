@@ -46,6 +46,7 @@ void SceneManager::Update()
 	{
 		if (NowScene)
 		{
+			ACTOR->Reset();
 			NowScene->Destroy();
 			//OBJMANAGER->ResetComponents();
 		}
@@ -73,6 +74,7 @@ void SceneManager::Destroy()
 {
 	if (NowScene)
 	{
+		ACTOR->Reset();
 		NowScene->Destroy();
 		//OBJMANAGER->ResetComponents();
 		//SAFE_DELETE(NowScene);

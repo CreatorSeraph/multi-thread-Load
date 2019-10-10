@@ -7,6 +7,8 @@ ImageManager::ImageManager()
 	:mSprite(nullptr)
 {
 	D3DXCreateSprite(g_device, &mSprite);
+	D3DXCreateFontW(g_device, 40, 0, 0, 1,
+		FALSE, HANGUL_CHARSET, 0, 0, 0, L"¸¼Àº °íµñ Bold", &font);
 }
 
 ImageManager::~ImageManager()
@@ -16,11 +18,16 @@ ImageManager::~ImageManager()
 		SAFE_RELEASE(iter.second->texturePtr);
 		SAFE_DELETE(iter.second);
 	}
+	mTexture.clear();
 
-	for (auto iter : mMesh)
+	for (auto iter : mMesh) {
 		SAFE_DELETE(iter.second);
+	}
 
+
+	mMesh.clear();
 	SAFE_RELEASE(mSprite);
+	SAFE_RELEASE(font);
 }
 
 texture* ImageManager::GetTexture(const wstring & key, const wstring & path)
@@ -94,18 +101,14 @@ vector<CMeshLoader*> ImageManager::GetVecMesh(const wstring & key, const wstring
 	return result;
 }
 
-void ImageManager::PrintText(const wstring & text, Vector3 pos, D3DCOLOR color, float size, bool center)
+void ImageManager::PrintText(const wstring & text, Vector3 pos, D3DCOLOR color)
 {
-	LPD3DXFONT font;
 	Matrix mat;
-	D3DXCreateFontW(g_device, size, 0, 0, 1,
-		FALSE, HANGUL_CHARSET, 0, 0, 0, L"Arial", &font);
 
 	D3DXMatrixTranslation(&mat, 10, 10, 0);
 
 	mSprite->SetTransform(&mat);
 	font->DrawTextW(mSprite, text.c_str(), text.size(), NULL, DT_CENTER, color);
-	SAFE_RELEASE(font);
 }
 
 void ImageManager::Begin(bool isInterface)

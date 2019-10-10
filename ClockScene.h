@@ -5,7 +5,7 @@ class ClockScene :
 	public CScene
 {
 private:
-	LPD3DXMESH sphereMesh[10];
+	LPD3DXMESH* sphereMesh[10];
 	Vector3 pos[10];
 	Matrix mat[10];
 

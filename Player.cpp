@@ -191,7 +191,7 @@ void Player::Update2()
 
 
 	//D3DXMatrixRotationY(&matWorld, D3DXToRadian(angle + 180.f));
-	D3DXMatrixRotationY(&matWorld, D3DXToRadian(angle));
+	D3DXMatrixRotationY(&matWorld, D3DXToRadian(angle+ 180.f));
 
 	D3DXVec3Normalize(&rotationDirection, &rotationDirection);
 	D3DXVec3TransformNormal(&rotationDirection, &rotationDirection, &matWorld);

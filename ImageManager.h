@@ -17,6 +17,7 @@ class ImageManager :
 {
 private:
 	LPD3DXSPRITE mSprite;
+	LPD3DXFONT font;
 	map<wstring, texture*> mTexture;
 	map<wstring, CMeshLoader*> mMesh;
 
@@ -32,7 +33,7 @@ public:
 	CMeshLoader* GetMesh(const wstring& key, const wstring& path, bool bFirst = false);
 	vector<CMeshLoader*> GetVecMesh(const wstring& key, const wstring& path, int count);
 
-	void PrintText(const wstring& text, Vector3 pos, D3DCOLOR color, float size, bool center = false);
+	void PrintText(const wstring& text, Vector3 pos, D3DCOLOR color);
 
 	wstring GetMtlPath() { return mtlKey; }
 

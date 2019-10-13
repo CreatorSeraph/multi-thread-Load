@@ -70,7 +70,7 @@ void CameraManager::Update()
 
 		XYMat = XMat * YMat;
 
-		Vector3 temp = Vector3(0.0f, 10.5f, -10.f);
+		Vector3 temp = Vector3(0.0f, 10.5f, -40.f);
 		//Vector3 temp = Vector3(0.0f, 10.0f, 100.f);
 
 		D3DXVec3TransformCoord(&(vCameraPos), &(temp), &XYMat);

@@ -24,7 +24,7 @@ void CMainGame::Init()
 	SCENE->ADDSCENE(L"Title", new CTitle());
 	SCENE->ADDSCENE(L"Clock", new ClockScene());
 
-	SCENE->CHANGESCENE(L"Test");
+	SCENE->CHANGESCENE(L"Clock");
 }
 
 void CMainGame::Update()

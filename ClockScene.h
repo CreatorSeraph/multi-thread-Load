@@ -9,6 +9,10 @@ private:
 	Vector3 pos[10];
 	Matrix mat[10];
 	texture* img;
+	Actor* second;
+	Actor* minute;
+	Actor* hour;
+	SYSTEMTIME systemtime;
 
 	float angle[10] = {0,};
 

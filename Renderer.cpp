@@ -14,7 +14,7 @@ template<class... Ts> struct overload : Ts... { using Ts::operator()...; };
 template<class... Ts> overload(Ts...)->overload<Ts...>;//¿Í! ÅÛÇÃ¸´!
 
 Renderer::Renderer(RenderType type, const wstring& key, const wstring& path, int count)
-	:renderType(type)
+	:renderType(type), frame(nullptr)
 {
 	switch (type)
 	{
@@ -102,12 +102,16 @@ void Renderer::Render()
 			}
 		},
 		[&](texture* Img) {
+			IMAGE->Begin(IsBegin);
 			IMAGE->GetSprite()->SetTransform(&GetActor()->transform->GetWorldMatrix());
 			IMAGE->GetSprite()->Draw(Img->texturePtr, nullptr, &Vector3(0.f, 0.f, 0.f), nullptr, D3DCOLOR_ARGB(255,255,255,255));
+			IMAGE->End();
 		},
 		[&](vector<texture*> VecImg) {
+			IMAGE->Begin(IsBegin);
 			IMAGE->GetSprite()->SetTransform(&GetActor()->transform->GetWorldMatrix());
 			IMAGE->GetSprite()->Draw(VecImg[frame->CurF]->texturePtr, nullptr, &Vector3(0.f, 0.f, 0.f), nullptr, D3DCOLOR_ARGB(255, 255, 255, 255));
+			IMAGE->End();
 		}
 		}, resource);
 }

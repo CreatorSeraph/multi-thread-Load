@@ -26,8 +26,8 @@ void CTitle::Init()
 	player = ACTOR->Create(TagType::BACKGROUND);
 	player->AddComponent<Player>();
 	player->AddComponent<Rigidbody>();
-	player->AddComponent<Renderer>(RenderType::vecmesh , L"player", L"./Image/obj/thief%df.obj", 1);
-	//player->AddComponent<Renderer>(RenderType::vecmesh, L"clud", L"./Image/dx_cloud_cha/Character%df.obj", 15);
+	//player->AddComponent<Renderer>(RenderType::vecmesh , L"player", L"./Image/obj/thief%df.obj", 1);
+	player->AddComponent<Renderer>(RenderType::vecmesh, L"clud", L"./Image/dx_cloud_cha/Character%df.obj", 15);
 	player->AddComponent<Collider>(ColliderType::MeshSphere, 10.f);
 
 	//gorgol = ACTOR->Create(TagType::BACKGROUND);
@@ -39,12 +39,12 @@ void CTitle::Init()
 	//gorgol->AddComponent<Collider>(ColliderType::MeshSphere, 10.f);
 
 	p_renderer = player->GetComponent<Renderer>();
-	p_renderer->Getframe()->SetFrame(0, 1, 50);
+	p_renderer->Getframe()->SetFrame(0, 15, 50);
 	p_renderer->SetFrame();
 
-	//player->GetTransform()->SetSize(Vector3(0.02, 0.02, 0.02));
 	p_transform = player->GetComponent<Transform>();
 	p_transform->SetSize(Vector3(1, 1, 1));
+	player->GetTransform()->SetSize(Vector3(0.02, 0.02, 0.02));
 
 	CAMERA->SetObjPos(player);
 

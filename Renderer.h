@@ -23,6 +23,7 @@ private:
 	CFrame* frame;
 
 	bool IsFrame = false;
+	bool IsBegin = false;
 
 public:
 	Renderer(RenderType type, const wstring& key, const wstring& path, int count = 0);
@@ -33,6 +34,7 @@ public:
 
 	CFrame* Getframe() { return frame; }
 	void SetFrame() { IsFrame = !IsFrame; }
+	void SetBegin(bool isBegin) { IsBegin = isBegin; }
 
 	virtual void Init() override;
 

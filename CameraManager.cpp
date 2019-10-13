@@ -4,7 +4,7 @@
 
 
 CameraManager::CameraManager()
-	:vCameraPos(0.f, 700.5f, -20.f), vAt(0.f, 0.f, 0.f), vUp(0.f, 1.f, 0.f), lerpObj(nullptr)
+	:vCameraPos(0.f, 10.5f, -10.f), vAt(0.f, 0.f, 0.f), vUp(0.f, 1.f, 0.f), lerpObj(nullptr)
 {
 	//500.5
 
@@ -70,8 +70,8 @@ void CameraManager::Update()
 
 		XYMat = XMat * YMat;
 
-		//Vector3 temp = Vector3(0.0f, 10.5f, -10.f);
-		Vector3 temp = Vector3(0.0f, 10.5f, 60.f);
+		Vector3 temp = Vector3(0.0f, 10.5f, -10.f);
+		//Vector3 temp = Vector3(0.0f, 10.0f, 100.f);
 
 		D3DXVec3TransformCoord(&(vCameraPos), &(temp), &XYMat);
 

@@ -24,7 +24,7 @@ void CMainGame::Init()
 	SCENE->ADDSCENE(L"Title", new CTitle());
 	SCENE->ADDSCENE(L"Clock", new ClockScene());
 
-	SCENE->CHANGESCENE(L"Clock");
+	SCENE->CHANGESCENE(L"Test");
 }
 
 void CMainGame::Update()
@@ -45,7 +45,7 @@ void CMainGame::Render()
 
 	IMAGE->Begin(true);
 
-	TCHAR FPS_MSG[50];
+	TCHAR FPS_MSG[200];
 	swprintf(FPS_MSG, L"FPS : %.f", DXUTGetFPS());
 	IMAGE->PrintText(FPS_MSG, Vector3(0, 0, 0), D3DCOLOR_ARGB(255, 255, 255, 255));
 

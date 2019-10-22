@@ -9,6 +9,7 @@ class CameraManager :
 {
 private:
 	Vector3 vCameraPos;
+	Vector3 vRotCameraPos;
 	Vector3 vAt;
 	Vector3 vUp;
 
@@ -28,7 +29,7 @@ public:
 	virtual ~CameraManager();
 
 	void Update();
-
+	void Update2();
 	void SetTransform();
 	void SetCameraPos(Vector3 pos) { vCameraPos = pos; }
 	void SetAtPos(Vector3 at) { vAt = at; }

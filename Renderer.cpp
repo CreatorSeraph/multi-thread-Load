@@ -84,6 +84,8 @@ void Renderer::Render()
 		[&](CMeshLoader* Mesh3d) {
 			g_device->SetTransform(D3DTS_WORLD, &GetActor()->transform->GetWorldMatrix());
 			g_device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+			if(KEYPRESS('F'))
+				g_device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 
 			for (int i = 0; i < Mesh3d->GetNumMaterials(); ++i)
 			{

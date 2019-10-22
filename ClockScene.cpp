@@ -46,7 +46,7 @@ void ClockScene::Init()
 	actor4->GetComponent<Transform>()->GetTransform()->SetRotation(Vector3(90, 0, 0));
 	hour = actor4;
 
-	CAMERA->SetCameraPos(Vector3(0.f, 0.f, 1000.f));
+	//CAMERA->SetCameraPos(Vector3(0.f, 0.f, 1000.f));
 	CAMERA->SetAtPos(Vector3(0.f, 0.f, 0.f));
 
 

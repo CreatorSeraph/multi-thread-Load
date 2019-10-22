@@ -218,6 +218,7 @@
       <Filter>1::MANAGERS\CAMERA</Filter>
     </ClCompile>
     <ClCompile Include="ClockScene.cpp" />
+    <ClCompile Include="cFxManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MeshFromOBJ.fx">
@@ -310,6 +311,7 @@
       <Filter>1::MANAGERS\CAMERA</Filter>
     </ClInclude>
     <ClInclude Include="ClockScene.h" />
+    <ClInclude Include="cFxManager.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
